@@ -1,0 +1,38 @@
+﻿@page "/account/login"
+
+<h3><b>Login</b></h3>
+
+<div class="row">
+    <div class="col-lg-4 col-md-10 col-12">
+        <div class="row">
+            <div class="col-12 my-1">
+                <input class="form-control" placeholder="Email Address" />
+            </div>
+            <div class="col-12 my-1">
+                <div class="input-group">
+                    <input class="form-control" placeholder="Password" type=@passwordFieldType />
+                    <button @onclick=TogglePasswordVisibility class="btn" type="button" style="border: 1px solid lightgray;"><span class="oi oi-eye"></span></button>
+                </div>
+            </div>
+            <div class="col-6 my-1">
+                <button class="btn btn-secondary w-100" type="button">Cancel</button>
+            </div>
+            <div class="col-6 my-1">
+                <button class="btn btn-primary w-100" type="button">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private KeyValuePair<string, string> credentials { get; set; }
+    private string passwordFieldType = "password";
+
+    protected override async Task OnInitializedAsync()
+    {
+        credentials = new KeyValuePair<string, string>();
+    }
+
+    private void TogglePasswordVisibility() => 
+        passwordFieldType = passwordFieldType == "password" ? "text" : "password";
+}

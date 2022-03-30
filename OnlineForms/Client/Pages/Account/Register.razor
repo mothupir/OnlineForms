@@ -1,0 +1,84 @@
+﻿@page "/account/register"
+@inject HttpClient httpClient
+@using System.Text.Json
+
+<h3><b>Register</b></h3>
+<hr />
+
+<form method="post">
+    <div class="row">
+        <div class="col-lg-4 col-md-10 col-12">
+            <div class="row">
+                <div class="col-12 my-1">
+                    <input @bind=user.Email.Email class="form-control" placeholder="Email Address" type="email" />
+                </div>
+
+                <div class="col-12 my-1">
+                    <div class="input-group">
+                        <input @bind=user.Password id="pass" class="form-control" placeholder="Password" type=@passInputFieldType />
+                        <button @onclick=TogglePasswordVisibility type="button" class="btn" style="border: 1px solid lightgray;"><span class="oi oi-eye"></span></button>
+                    </div>
+                </div>
+
+                <div class="col-12 my-1">
+                    <div class="input-group">
+                        <input id="confirm_pass" class="form-control" placeholder="Confirm Password" type=@confInputFieldType />
+                        <button @onclick=ToggleConfirmVisibility type="button" class="btn" style="border: 1px solid lightgray;"><span class="oi oi-eye"></span></button>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-6 my-1">
+                            <button class="btn btn-secondary w-100">Cancel</button>
+                        </div>
+                        <div class="col-6 my-1">
+                            <button @onclick=RegisterUser type="button" class="btn btn-primary w-100">Register</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 my-1 text-end">
+                    <a href="#" class="text-decoration-none">Login</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</form>
+
+
+
+@code {
+
+    private User? user;
+    private string passInputFieldType = "password";
+    private string confInputFieldType = "password";
+
+    protected override async Task OnInitializedAsync()
+    {
+        user = new User()
+        {
+            Id = 0,
+            Email = new UserEmail()
+            {
+                Id = 0,
+                Email = ""
+            },
+            Password = ""
+        };
+        //user = await httpClient.GetFromJsonAsync<User>("api/account/get/1");
+    }
+
+    private void RegisterUser()
+    {
+        Console.WriteLine($"Email Address: {user.Email.Email} \nPassword: {user.Password}");
+        //var nav = new NavigationManager();
+        //NavigationManager.NavigateTo("/");
+    }
+
+    private void TogglePasswordVisibility() => passInputFieldType = passInputFieldType == "password" ? "text" : "password";
+    private void ToggleConfirmVisibility() => confInputFieldType = confInputFieldType == "password" ? "text" : "password";
+    
+
+}

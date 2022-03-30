@@ -1,0 +1,198 @@
+﻿@page "/form/add"
+
+
+<h3><b>New Form</b></h3>
+<hr />
+
+<div class="row">
+    <div class="col-lg-6 col-12 my-2">
+        <div class="row">
+            <div class="col-12">
+                <h4>Form Definition</h4>
+                <hr />
+            </div>
+        </div>
+
+        <div class="row justify-content-between">
+            <div class="col-4">
+                <button type="button" class="btn btn-info w-100" data-bs-toggle="modal" data-bs-target="#addFieldModal">
+                    <span class="oi oi-plus"></span>
+                </button>
+            </div>
+            
+            <div class="col-2">
+                <button type="button" class="btn btn-outline-warning w-100">Action</button>
+            </div>
+        </div>
+
+        <hr />
+
+        @foreach(var formField in formFields)
+        {
+            <div class='row my-2'>
+                <div class='col-10'>
+                    @((MarkupString)formField.ToMarkupString())
+                </div>
+
+                <div class='col-2'>
+                    <div class='btn-group w-100'>
+                        <button @onclick="@(()=>EditField(@formField.Id))" type='button' class='btn text-warning' style='border: 1px solid lightgray;'><span class='oi oi-pencil'></span></button>
+                        <button @onclick="@(()=>RemoveField(@formField.Id))" type='button' class='btn text-danger' style='border: 1px solid lightgray;'><span class='oi oi-delete'></span></button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <OnlineForms.Client.Pages.Account.ForgotPassword></OnlineForms.Client.Pages.Account.ForgotPassword>
+
+    <div class="modal fade" id="addFieldModal" tabindex="-1" aria-labelledby="addFieldModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addFieldModalLabel">New Field</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row my-1">
+                        <div class="col-11">
+                            <input class="form-control" placeholder="Prompt" />
+                        </div>
+                        <div class="col-1">
+                            <span class="text-danger">*</span>
+                        </div>
+                    </div>
+
+                    <div class="row my-1">
+                        <div class="col-11">
+                            <textarea class="form-control" placeholder="Description" rows="3" style="resize: none"></textarea>
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+
+                    <div class="row my-2">
+                        <div class="col-11">
+                            <div class="form-check form-switch">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Required</label>
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            </div>
+                        </div>
+                        
+                        <div class="col-1">
+                            <span class="text-danger">*</span>
+                        </div>
+                    </div>
+
+                    <div class="row my-1">
+                        <div class="col-11">
+                            <select id="options" @onchange=OptionChanged class="form-select">
+                                <option selected>Select Form Field Type</option>
+                                @foreach(var formFieldType in formFieldTypes)
+                                {
+                                    <option value="@formFieldType.Key">@formFieldType.Value</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="col-1">
+                            <span class="text-danger">*</span>
+                        </div>
+                    </div>
+
+                    <div class="row my-1">
+                        <div class="col-11">
+                            <select id="options" @onchange=OptionChanged class="form-select">
+                                <option selected>Select Option Field Type</option>
+                                @foreach(var optionType in optionTypes)
+                                {
+                                    <option value="@optionType.Key">@optionType.Value</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="col-1">
+                            <span class="text-danger">*</span>
+                        </div>
+                    </div>
+                </div>
+
+                @((MarkupString)content)
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary w-25">Add Field</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private Form form;
+    private string content = "";
+    private List<FormField> formFields;
+    private List<KeyValuePair<FormFieldType, string>> formFieldTypes;
+    private List<KeyValuePair<OptionType, string>> optionTypes;
+
+    protected override async Task OnInitializedAsync()
+    {
+        formFieldTypes = new List<KeyValuePair<FormFieldType, string>>
+        {
+            new KeyValuePair<FormFieldType, string>(FormFieldType.InputField, "Short Text Field"),
+            new KeyValuePair<FormFieldType, string>(FormFieldType.TextField, "Long Text Field"),
+            new KeyValuePair<FormFieldType, string>(FormFieldType.OptionField, "Select Option Field")
+        };
+
+        optionTypes = new List<KeyValuePair<OptionType, string>>
+        {
+            new KeyValuePair<OptionType, string>(OptionType.Dropdown, "Dropdown"),
+            new KeyValuePair<OptionType, string>(OptionType.Checkbox, "Checkbox"),
+            new KeyValuePair<OptionType, string>(OptionType.RadioButton, "Radio Button")
+        };
+
+        formFields = new List<FormField>() {
+            new InputField()
+            {
+                Id = 0,
+                Prompt = "First Name",
+                Description = "Description Not Available",
+                IsRequired = true
+            },
+            new TextField()
+            {
+                Id = 1,
+                Prompt = "Last Name",
+                Description = "Description Not Available",
+                IsRequired = true
+            }
+
+        };
+    }
+
+    private void OptionChanged()
+    {
+        content += "<h4>Hello</h4>";
+        Console.WriteLine("Hello");
+    }
+
+    private void AddField()
+    {
+        
+    }
+
+    private void RemoveField(int id)
+    {
+        var formField = formFields.Find(f => f.Id == id);
+
+        if (formField != null ? formFields.Remove(formField) : false)
+        {
+
+        }
+    }
+
+    private void EditField(int id)
+    {
+        
+    }
+}

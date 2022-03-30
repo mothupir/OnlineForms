@@ -1,0 +1,32 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row">
+            <div class="dropdown">
+                <div class="btn-group">
+                    <button class="btn btn-secondary btn-sm" type="button">Register</button>
+                    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="account/login"><span class="oi oi-account-login" aria-hidden="true"></span> Login</a></li>
+                        <li><a class="dropdown-item" href="account/register"><span class="oi oi-pencil" aria-hidden="true"></span> Register</a></li>
+                        <li><a class="dropdown-item" href="account/logout"><span class="oi oi-account-logout" aria-hidden="true"></span> Logout</a></li>
+                    </ul>
+                </div>
+
+              
+            </div>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>

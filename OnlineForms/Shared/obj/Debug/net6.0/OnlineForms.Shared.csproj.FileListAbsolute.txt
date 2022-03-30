@@ -1,0 +1,14 @@
+C:\Users\bbdnet2576\Desktop\Projects\OnlineForms\OnlineForms\Shared\bin\Debug\net6.0\OnlineForms.Shared.deps.json
+C:\Users\bbdnet2576\Desktop\Projects\OnlineForms\OnlineForms\Shared\bin\Debug\net6.0\OnlineForms.Shared.runtimeconfig.json
+C:\Users\bbdnet2576\Desktop\Projects\OnlineForms\OnlineForms\Shared\bin\Debug\net6.0\OnlineForms.Shared.dll
+C:\Users\bbdnet2576\Desktop\Projects\OnlineForms\OnlineForms\Shared\bin\Debug\net6.0\OnlineForms.Shared.pdb
+C:\Users\bbdnet2576\Desktop\Projects\OnlineForms\OnlineForms\Shared\obj\Debug\net6.0\OnlineForms.Shared.csproj.AssemblyReference.cache
+C:\Users\bbdnet2576\Desktop\Projects\OnlineForms\OnlineForms\Shared\obj\Debug\net6.0\OnlineForms.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bbdnet2576\Desktop\Projects\OnlineForms\OnlineForms\Shared\obj\Debug\net6.0\OnlineForms.Shared.AssemblyInfoInputs.cache
+C:\Users\bbdnet2576\Desktop\Projects\OnlineForms\OnlineForms\Shared\obj\Debug\net6.0\OnlineForms.Shared.AssemblyInfo.cs
+C:\Users\bbdnet2576\Desktop\Projects\OnlineForms\OnlineForms\Shared\obj\Debug\net6.0\OnlineForms.Shared.csproj.CoreCompileInputs.cache
+C:\Users\bbdnet2576\Desktop\Projects\OnlineForms\OnlineForms\Shared\obj\Debug\net6.0\OnlineForms.Shared.dll
+C:\Users\bbdnet2576\Desktop\Projects\OnlineForms\OnlineForms\Shared\obj\Debug\net6.0\refint\OnlineForms.Shared.dll
+C:\Users\bbdnet2576\Desktop\Projects\OnlineForms\OnlineForms\Shared\obj\Debug\net6.0\OnlineForms.Shared.pdb
+C:\Users\bbdnet2576\Desktop\Projects\OnlineForms\OnlineForms\Shared\obj\Debug\net6.0\OnlineForms.Shared.genruntimeconfig.cache
+C:\Users\bbdnet2576\Desktop\Projects\OnlineForms\OnlineForms\Shared\obj\Debug\net6.0\ref\OnlineForms.Shared.dll
